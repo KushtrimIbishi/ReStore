@@ -4,7 +4,7 @@ namespace API.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(StoreContext context) 
+        public static void Initialize(StoreContext context)
         {
             if (context.Products.Any()) return;
 
@@ -207,9 +207,7 @@ namespace API.Data
                     QuantityInStock = 100
                 },
             };
-
-            // context.Products.AddRange(products);
-
+            
             foreach (var product in products)
             {
                 context.Products.Add(product);
