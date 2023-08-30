@@ -58,7 +58,7 @@ export const basketSlice = createSlice({
         builder.addCase(removeBasketItemAsync.pending, (state, action) => {
             state.status = 'pendingRemoveItem' + action.meta.arg.productId + action.meta.arg.name;
         })
-        builder.addCase(removeBasketItemAsync.fulfilled, (state, action:any) => {
+        builder.addCase(removeBasketItemAsync.fulfilled, (state, action) => {
             const { productId, quantity } = action.meta.arg;
             const itemIndex = state.basket?.items.findIndex(i => i.productId === productId);
             if (itemIndex === -1 || itemIndex === undefined) return; 
