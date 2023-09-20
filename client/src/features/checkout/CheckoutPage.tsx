@@ -83,7 +83,6 @@ export default function CheckoutPage() {
                 }
             });
             console.log(paymentResult);
-            if (paymentResult.paymentIntent?.status === 'succeeded') {
                 const orderNumber = await agent.Orders.create({ saveAddress, shippingAddress: address });
                 setOrderNumber(orderNumber);
                 setPaymentSucceeded(true);
@@ -91,12 +90,7 @@ export default function CheckoutPage() {
                 setActiveStep(activeStep + 1);
                 dispatch(clearBasket());
                 setLoading(false);
-            } else {
-                setPaymentMessage(paymentResult.error?.message!);
-                setPaymentSucceeded(false);
-                setLoading(false);
-                setActiveStep(activeStep + 1);
-            }
+                
         } catch (error) {
             console.log(error);
             setLoading(false);
